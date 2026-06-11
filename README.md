@@ -1,4 +1,3 @@
-:::writing{variant="document" id="58271"}
 DimLife VPN
 Fast, secure and easy-to-use VPN client based on open-source technologies.
 Features
