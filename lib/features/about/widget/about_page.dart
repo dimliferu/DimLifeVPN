@@ -123,7 +123,7 @@ const Text(
     SizedBox(height: 4),
 
     const Text(
-      "Безопасный и свободный интернет“,
+      "Безопасный и свободный интернет",
       textAlign: TextAlign.center,
     ),
   ],
