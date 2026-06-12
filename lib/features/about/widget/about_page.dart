@@ -63,7 +63,7 @@ class AboutPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.pages.about.title),
+        title: const Text("О DimLife"),
         actions: [
           PopupMenuButton(
             icon: Icon(AdaptiveIcon(context).more),
@@ -113,7 +113,7 @@ class AboutPage extends HookConsumerWidget {
     trailing: const Icon(FluentIcons.open_24_regular),
     onTap: () async {
       await UriUtils.tryLaunch(
-        Uri.parse("https://t.me/akillserv"),
+        Uri.parse("https://t.me/dimliferu"),
       );
     },
   ),
@@ -123,7 +123,7 @@ class AboutPage extends HookConsumerWidget {
     trailing: const Icon(FluentIcons.mail_24_regular),
     onTap: () async {
       await UriUtils.tryLaunch(
-        Uri.parse("mailto:support@dimlifevpn.com"),
+        Uri.parse("mailto:support@dimlife.ru"),
       );
     },
   ),
