@@ -8,7 +8,7 @@
 </div>
 
 Быстрый и удобный VPN-клиент для Android
-
+<center>
 </div>---
 
 📥 Download
@@ -57,3 +57,4 @@ GitHub: https://github.com/dimliferu/DimLifeVPN
 ---
 
 Спасибо за использование DimLife VPN ❤️
+</center>
