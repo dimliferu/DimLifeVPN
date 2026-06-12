@@ -32,3 +32,13 @@ This project is based on open-source software and follows the corresponding lice
 
 Telegram
 https://t.me/dimliferu
+
+
+## Acknowledgements
+
+DimLifeVPN is based on the excellent open-source Hiddify project.
+
+Original repository:
+https://github.com/hiddify/hiddify-app
+
+This project is distributed under GPL-3.0.
