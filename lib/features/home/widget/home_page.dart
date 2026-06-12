@@ -74,7 +74,7 @@ class HomePage extends HookConsumerWidget {
       body: Container(
   decoration: const BoxDecoration(
     image: DecorationImage(
-      image: AssetImage('assets/images/bg.png'),
+      image: AssetImage('assets/images/fon.png'),
       fit: BoxFit.cover,
     ),
   ),
