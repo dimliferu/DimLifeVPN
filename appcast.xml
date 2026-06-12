@@ -5,15 +5,15 @@
     <title>DimLifeVPN Updates</title>
 
     <item>
-      <title>DimLife VPN 1.0.2</title>
+      <title>DimLife VPN 1.0.3</title>
 
-      <sparkle:version>10002</sparkle:version>
+      <sparkle:version>10003</sparkle:version>
 
-      <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+      <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
 
       <enclosure
-        url="https://github.com/dimliferu/DimLifeVPN/releases/download/v1.0.2/DimLifeVPN-universal.apk"
-        sparkle:version="10002"
+        url="https://github.com/dimliferu/DimLifeVPN/releases/download/v1.0.3/DimLifeVPN-universal.apk"
+        sparkle:version="10003"
         length="0"
         type="application/vnd.android.package-archive" />
 
