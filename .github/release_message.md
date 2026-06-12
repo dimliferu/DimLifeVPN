@@ -1,6 +1,11 @@
 <div align="center">DimLife VPN
 
-""Release Downloads" (https://img.shields.io/github/downloads/dimliferu/DimLifeVPN/RELEASE_TAG/total?style=flat-square&logo=github)" (https://github.com/dimliferu/DimLifeVPN/releases)
+
+<div align="center">
+    <a href="https://github.com/dimliferu/DimLifeVPN/releases">
+        <img src="https://img.shields.io/github/downloads/dimliferu/DimLifeVPN/RELEASE_TAG/total?style=flat-square&logo=github" alt="Release Downloads">
+    </a>
+</div>
 
 Быстрый и удобный VPN-клиент для Android
 
