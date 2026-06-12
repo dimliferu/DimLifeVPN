@@ -19,18 +19,18 @@ env:
   NDK_VERSION: r28c
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   TAG_NAME: "${{ inputs.tag-name }}"
-  TARGET_NAME_gz: "Hiddify-Linux-x64-AppImage.tar"
-  TARGET_NAME_AppImage: "Hiddify-Linux-x64-AppImage"
-  TARGET_NAME_deb: "Hiddify-Debian-x64"
-  # TARGET_NAME_rpm: "Hiddify-rpm-x64"
+  TARGET_NAME_gz: "DimLifeVPN-Linux-x64-AppImage.tar"
+  TARGET_NAME_AppImage: "DimLifeVPN-Linux-x64-AppImage"
+  TARGET_NAME_deb: "DimLife-Debian-x64"
+  # TARGET_NAME_rpm: "DimLifeVPN-rpm-x64"
   TARGET_NAME_apk: "DimLifeVPN"
   TARGET_NAME_aab: "DimLifeVPN"
-  TARGET_NAME_exe: "Hiddify-Windows-Setup-x64"
-  TARGET_NAME_msix: "Hiddify-Windows-x64"
-  TARGET_NAME_zip: "Hiddify-Windows-Portable-x64"
-  TARGET_NAME_dmg: "Hiddify-MacOS"
-  TARGET_NAME_pkg: "Hiddify-MacOS-Installer"
-  TARGET_NAME_ipa: "Hiddify-iOS"
+  TARGET_NAME_exe: "DimLifeVPN-Windows-Setup-x64"
+  TARGET_NAME_msix: "DIMLifeVPN-Windows-x64"
+  TARGET_NAME_zip: "DimLifeVPN-Windows-Portable-x64"
+  TARGET_NAME_dmg: "DimLifeVPN-MacOS"
+  TARGET_NAME_pkg: "DimLifeVPN-MacOS-Installer"
+  TARGET_NAME_ipa: "DimLifeVPN-iOS"
   
 
 jobs:
@@ -399,7 +399,7 @@ jobs:
           set +e 
           sed 's|RELEASE_TAG|${{ env.TAG_NAME }}|g' ./.github/release_message.md > release.md
           pip install gitchangelog pystache mustache markdown
-          prelease=$(curl --silent "https://api.github.com/repos/hiddify/hiddify-app/releases/latest" | grep -Po '"tag_name": "\K([^"]*)') 
+          prelease=$(curl --silent "https://api.github.com/repos/dimliferu/DimLifeVPN/releases/latest" | grep -Po '"tag_name": "\K([^"]*)') 
           echo -e "\n\n<details markdown=1><summary>All changes from $current to the latest commit:</summary>\n\n">>release.md
           gitchangelog "${prelease}.." >> release.md  2>&1 || echo "Error in gitchangelog"
           echo -e "\n\n</details>">>release.md
@@ -414,19 +414,6 @@ jobs:
           body_path: './release.md'
           prerelease: true
 
-      - name: Create or Update Draft Release
-        uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_FOR_HIDDIFY_APP_REPO }}
-          GITHUB_REPOSITORY: hiddify/hiddify-app
-        with:
-          files: ./out/*
-          name: 'draft'
-          tag_name: 'draft'
-          body_path: './release.md'
-          target_commitish: '530bf77839a74d4f13847ba244a20734ac7ab119'
-          prerelease: true
-          repository: hiddify/hiddify-app
 
   upload-release:
     permissions: write-all
@@ -474,7 +461,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJson: service_account.json
-          packageName: app.hiddify.com
+          packageName: ru.dimlife.vpn
           releaseName: ${{ env.TAG_NAME }}
           releaseFiles: ./hiddify-android-market.aab
           track: 'beta'
