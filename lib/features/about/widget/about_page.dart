@@ -105,7 +105,14 @@ class AboutPage extends HookConsumerWidget {
     Text(
       "Версия ${appInfo.presentVersion}",
     ),
+const Gap(4),
 
+const Text(
+  "Xray + Sing-box",
+  style: TextStyle(
+    color: Colors.grey,
+  ),
+),
     const Gap(12),
 
     const Text(
@@ -116,7 +123,7 @@ class AboutPage extends HookConsumerWidget {
     SizedBox(height: 4),
 
     const Text(
-      "Для безопасного и свободного интернета",
+      "Безопасный и свободный интернет“,
       textAlign: TextAlign.center,
     ),
   ],
@@ -157,8 +164,9 @@ const Padding(
     child: Text(
       "© 2026 DimLife VPN",
       style: TextStyle(
-        color: Colors.grey,
-      ),
+  color: Colors.white38,
+  fontSize: 12,
+)
     ),
   ),
 ),
