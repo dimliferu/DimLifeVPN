@@ -89,14 +89,14 @@ class AboutPage extends HookConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Assets.images.logo.svg(width: 64, height: 64),
+                  Assets.images.logo.svg(width: 96, height: 96),
                   const Gap(16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(t.common.appTitle, style: Theme.of(context).textTheme.titleLarge),
                       const Gap(4),
-                      Text("${t.common.version} ${appInfo.presentVersion}"),
+                      Text("Версия ${appInfo.presentVersion}"),
                     ],
                   ),
                 ],
@@ -105,37 +105,29 @@ class AboutPage extends HookConsumerWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              ...conditionalTiles,
-              if (conditionalTiles.isNotEmpty) const Divider(),
-              ListTile(
-                title: Text(t.pages.about.sourceCode),
-                trailing: const Icon(FluentIcons.open_24_regular),
-                onTap: () async {
-                  await UriUtils.tryLaunch(Uri.parse(Constants.githubUrl));
-                },
-              ),
-              ListTile(
-                title: Text(t.pages.about.telegramChannel),
-                trailing: const Icon(FluentIcons.open_24_regular),
-                onTap: () async {
-                  await UriUtils.tryLaunch(Uri.parse(Constants.telegramChannelUrl));
-                },
-              ),
-              ListTile(
-                title: Text(t.pages.about.termsAndConditions),
-                trailing: const Icon(FluentIcons.open_24_regular),
-                onTap: () async {
-                  await UriUtils.tryLaunch(Uri.parse(Constants.termsAndConditionsUrl));
-                },
-              ),
-              ListTile(
-                title: Text(t.pages.about.privacyPolicy),
-                trailing: const Icon(FluentIcons.open_24_regular),
-                onTap: () async {
-                  await UriUtils.tryLaunch(Uri.parse(Constants.privacyPolicyUrl));
-                },
-              ),
-            ]),
+  ...conditionalTiles,
+  if (conditionalTiles.isNotEmpty) const Divider(),
+
+  ListTile(
+    title: const Text("Telegram канал"),
+    trailing: const Icon(FluentIcons.open_24_regular),
+    onTap: () async {
+      await UriUtils.tryLaunch(
+        Uri.parse("https://t.me/akillserv"),
+      );
+    },
+  ),
+
+  ListTile(
+    title: const Text("Поддержка"),
+    trailing: const Icon(FluentIcons.mail_24_regular),
+    onTap: () async {
+      await UriUtils.tryLaunch(
+        Uri.parse("mailto:support@dimlifevpn.com"),
+      );
+    },
+  ),
+]),
           ),
         ],
       ),
