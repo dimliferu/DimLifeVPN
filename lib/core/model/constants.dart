@@ -8,7 +8,7 @@ abstract class Constants {
   static const licenseUrl = "https://github.com/dimliferu/DimLifeVPN";
   static const githubReleasesApiUrl = "https://api.github.com/repos/dimliferu/DimLifeVPN/releases";
   static const githubLatestReleaseUrl = "https://github.com/dimliferu/DimLifeVPN/releases/latest";
-  static const appCastUrl = "https://raw.githubusercontent.com/hiddify/hiddify-next/main/appcast.xml";
+  static const appCastUrl = "https://raw.githubusercontent.com/dimliferu/DimLifeVPN/main/appcast.xml";
   static const telegramChannelUrl = "https://t.me/dimliferu";
   static const privacyPolicyUrl = "https://github.com/dimliferu/DimLifeVPN";
   static const termsAndConditionsUrl = "https://github.com/dimliferu/DimLifeVPN";
