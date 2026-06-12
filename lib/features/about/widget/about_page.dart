@@ -86,21 +86,41 @@ class AboutPage extends HookConsumerWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Assets.images.logo.svg(width: 96, height: 96),
-                  const Gap(16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(t.common.appTitle, style: Theme.of(context).textTheme.titleLarge),
-                      const Gap(4),
-                      Text("Версия ${appInfo.presentVersion}"),
-                    ],
-                  ),
-                ],
-              ),
+              child: Column(
+  children: [
+    Assets.images.logo.svg(
+      width: 120,
+      height: 120,
+    ),
+
+    const Gap(12),
+
+    Text(
+      "DimLife",
+      style: Theme.of(context).textTheme.headlineSmall,
+    ),
+
+    const Gap(4),
+
+    Text(
+      "Версия ${appInfo.presentVersion}",
+    ),
+
+    const Gap(12),
+
+    const Text(
+      "Современный VPN-клиент",
+      textAlign: TextAlign.center,
+    ),
+
+    SizedBox(height: 4),
+
+    const Text(
+      "Для безопасного и свободного интернета",
+      textAlign: TextAlign.center,
+    ),
+  ],
+),
             ),
           ),
           SliverList(
@@ -127,6 +147,21 @@ class AboutPage extends HookConsumerWidget {
       );
     },
   ),
+              const Divider(),
+
+const Padding(
+  padding: EdgeInsets.symmetric(
+    vertical: 24,
+  ),
+  child: Center(
+    child: Text(
+      "© 2026 DimLife VPN",
+      style: TextStyle(
+        color: Colors.grey,
+      ),
+    ),
+  ),
+),
 ]),
           ),
         ],
