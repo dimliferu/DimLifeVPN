@@ -48,6 +48,8 @@
 
 📢 Официальные ресурсы
 
+Наш Сайт: https://dimlife.ru
+
 Telegram: https://t.me/dimliferu
 
 GitHub: https://github.com/dimliferu/DimLifeVPN
