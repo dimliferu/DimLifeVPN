@@ -204,7 +204,7 @@ class AboutPage extends HookConsumerWidget {
 
       const SizedBox(height: 40),
 
-      const Center(
+const Center(
         child: Text(
           "© 2026 DimLife VPN",
           style: TextStyle(
@@ -215,3 +215,10 @@ class AboutPage extends HookConsumerWidget {
     ],
   ),
 ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+}
