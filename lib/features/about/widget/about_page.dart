@@ -205,20 +205,19 @@ class AboutPage extends HookConsumerWidget {
       const SizedBox(height: 40),
 
 const Center(
-        child: Text(
-          "© 2026 DimLife VPN",
-          style: TextStyle(
-            color: Colors.white38,
-          ),
-        ),
-      ),
-    ],
+  child: Text(
+    "© 2026 DimLife VPN",
+    style: TextStyle(
+      color: Colors.white38,
+    ),
   ),
 ),
-          ),
-        ),
-      ],
-    ),
-  );
+
+],
+  ),
+),
+    );
+  }
+});
 }
 }
