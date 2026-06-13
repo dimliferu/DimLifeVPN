@@ -39,7 +39,10 @@ abstract class LinkParser {
     final queryParams = uri.queryParameters;
     switch (uri.scheme) {
       case 'dimlife':
-  return null;
+  return (
+    url: link,
+    name: 'dimlife',
+  );
       case 'hiddify':
         if (queryParams.containsKey('url')) {
           return (url: queryParams['url']!, name: queryParams['name'] ?? '');
