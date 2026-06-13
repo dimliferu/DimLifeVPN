@@ -25,28 +25,37 @@ class HomePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        // leading: (RootScaffold.stateKey.currentState?.hasDrawer ?? false) && showDrawerButton(context)
-        //     ? DrawerButton(
-        //         onPressed: () {
-        //           RootScaffold.stateKey.currentState?.openDrawer();
-        //         },
-        //       )
-        //     : null,
-        title: Row(
-          children: [
-            Assets.images.logo.svg(height: 24),
-            const Gap(8),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(text: t.common.appTitle),
-                  const TextSpan(text: " "),
-                  const WidgetSpan(child: AppVersionLabel(), alignment: PlaceholderAlignment.middle),
-                ],
-              ),
-            ),
-          ],
+  centerTitle: true,
+  leading: IconButton(
+    icon: const Icon(
+      Icons.menu_rounded,
+      size: 28,
+    ),
+    onPressed: () {
+      Scaffold.of(context).openDrawer();
+    },
+  ),
+  title: Image.asset(
+    'assets/images/dimlife_logo.png',
+    height: 36,
+  ),
+  actions: [
+    Semantics(
+      key: const ValueKey("profile_add_button"),
+      label: t.pages.profiles.add,
+      child: IconButton(
+        icon: Icon(
+          Icons.add_rounded,
+          color: theme.colorScheme.primary,
+          size: 30,
         ),
+        onPressed: () =>
+            ref.read(bottomSheetsNotifierProvider.notifier).showAddProfile(),
+      ),
+    ),
+    const SizedBox(width: 8),
+  ],
+),
         actions: [
           // IconButton(
           //     onPressed: () => const QuickSettingsRoute().push(context),
