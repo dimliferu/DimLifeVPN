@@ -81,99 +81,137 @@ class AboutPage extends HookConsumerWidget {
           const Gap(8),
         ],
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-  children: [
-    Assets.images.logo.svg(
-      width: 120,
-      height: 120,
+      body: Container(
+  decoration: const BoxDecoration(
+    image: DecorationImage(
+      image: AssetImage('assets/images/fon.png'),
+      fit: BoxFit.cover,
     ),
-
-    const Gap(12),
-
-    Text(
-      "DimLife",
-      style: Theme.of(context).textTheme.headlineSmall,
-    ),
-
-    const Gap(4),
-
-    Text(
-      "Версия ${appInfo.presentVersion}",
-    ),
-const Gap(4),
-
-const Text(
-  "Xray + Sing-box",
-  style: TextStyle(
-    color: Colors.grey,
   ),
-),
-    const Gap(12),
+  child: ListView(
+    padding: const EdgeInsets.all(20),
+    children: [
+      const SizedBox(height: 20),
 
-    const Text(
-      "Современный VPN-клиент",
-      textAlign: TextAlign.center,
-    ),
-
-    SizedBox(height: 4),
-
-    const Text(
-      "Безопасный и свободный интернет",
-      textAlign: TextAlign.center,
-    ),
-  ],
-),
-            ),
+      Center(
+        child: Container(
+          width: 170,
+          height: 170,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blue,
+                blurRadius: 40,
+                spreadRadius: 8,
+              ),
+            ],
           ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-  ...conditionalTiles,
-  if (conditionalTiles.isNotEmpty) const Divider(),
-
-  ListTile(
-    title: const Text("Telegram канал"),
-    trailing: const Icon(FluentIcons.open_24_regular),
-    onTap: () async {
-      await UriUtils.tryLaunch(
-        Uri.parse("https://t.me/dimliferu"),
-      );
-    },
-  ),
-
-  ListTile(
-    title: const Text("Поддержка"),
-    trailing: const Icon(FluentIcons.mail_24_regular),
-    onTap: () async {
-      await UriUtils.tryLaunch(
-        Uri.parse("mailto:support@dimlife.ru"),
-      );
-    },
-  ),
-              const Divider(),
-
-const Padding(
-  padding: EdgeInsets.symmetric(
-    vertical: 24,
-  ),
-  child: Center(
-    child: Text(
-      "© 2026 DimLife VPN",
-      style: TextStyle(
-  color: Colors.white38,
-  fontSize: 12,
-)
-    ),
-  ),
-),
-]),
-          ),
-        ],
+          child: Assets.images.logo.svg(),
+        ),
       ),
-    );
-  }
-}
+
+      const Gap(24),
+
+      Center(
+        child: Text(
+          "DimLife VPN",
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+      ),
+
+      const Gap(8),
+
+      Center(
+        child: Text(
+          "Версия ${appInfo.presentVersion}",
+          style: const TextStyle(color: Colors.white60),
+        ),
+      ),
+
+      const Gap(4),
+
+      const Center(
+        child: Text(
+          "Xray • Sing-box",
+          style: TextStyle(color: Colors.white38),
+        ),
+      ),
+
+      const Gap(24),
+
+      Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white12,
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: const Column(
+          children: [
+            Text(
+              "Современный VPN-клиент",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "Безопасный и свободный интернет без ограничений",
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+
+      const Gap(20),
+
+      ListTile(
+        leading: const Icon(FluentIcons.chat_24_regular),
+        title: const Text("Telegram"),
+        subtitle: const Text("@dimliferu"),
+        trailing: const Icon(FluentIcons.open_24_regular),
+        onTap: () async {
+          await UriUtils.tryLaunch(
+            Uri.parse("https://t.me/dimliferu"),
+          );
+        },
+      ),
+
+      ListTile(
+        leading: const Icon(FluentIcons.mail_24_regular),
+        title: const Text("Поддержка"),
+        subtitle: const Text("support@dimlife.ru"),
+        trailing: const Icon(FluentIcons.open_24_regular),
+        onTap: () async {
+          await UriUtils.tryLaunch(
+            Uri.parse("mailto:support@dimlife.ru"),
+          );
+        },
+      ),
+
+      ListTile(
+        leading: const Icon(FluentIcons.globe_24_regular),
+        title: const Text("Сайт"),
+        subtitle: const Text("dimlife.ru"),
+        trailing: const Icon(FluentIcons.open_24_regular),
+        onTap: () async {
+          await UriUtils.tryLaunch(
+            Uri.parse("https://dimlife.ru"),
+          );
+        },
+      ),
+
+      const SizedBox(height: 40),
+
+      const Center(
+        child: Text(
+          "© 2026 DimLife VPN",
+          style: TextStyle(
+            color: Colors.white38,
+          ),
+        ),
+      ),
+    ],
+  ),
+),
