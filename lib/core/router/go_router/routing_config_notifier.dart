@@ -70,6 +70,11 @@ class RoutingConfigNotifier extends _$RoutingConfigNotifier {
       redirect: (context, state) {
         // fix path-parameters for deep link
         String? url;
+        if (state.uri.scheme == 'dimlife' &&
+    state.uri.host == 'routing' &&
+    state.uri.path.startsWith('/add/')) {
+  return '/settings/routing-options';
+}
         if (LinkParser.protocols.contains(state.uri.scheme)) {
           url = state.uri.toString();
         } else if (PlatformUtils.isDesktop && newUrlFromAppLink.isNotEmpty) {
