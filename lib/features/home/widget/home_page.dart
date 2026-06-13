@@ -37,7 +37,7 @@ class HomePage extends HookConsumerWidget {
   ),
   title: Image.asset(
     'assets/images/dimlife-logo.png',
-    height: 80,
+    height: 130,
   ),
   actions: [
     Semantics(
