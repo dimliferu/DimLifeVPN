@@ -243,8 +243,8 @@ class _ConnectionButton extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     Container(
-                      width: 220,
-                      height: 220,
+                      width: 260,
+                      height: 260,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
@@ -267,8 +267,8 @@ class _ConnectionButton extends StatelessWidget {
                     ),
 
                     Container(
-                      width: 140,
-                      height: 140,
+                      width: 180,
+                      height: 180,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: const Color(0xFF081020),
@@ -288,7 +288,7 @@ class _ConnectionButton extends StatelessWidget {
 
                     Icon(
                       Icons.power_settings_new_rounded,
-                      size: 70,
+                      size: 80,
                       color: buttonColor,
                     ),
                   ],
