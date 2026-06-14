@@ -2,6 +2,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/dimlife-logo" />
+            android:src="@drawable/dimlife_logo" />
     </item>
 </layer-list>
