@@ -94,22 +94,25 @@ class AboutPage extends HookConsumerWidget {
       const SizedBox(height: 20),
 
       Center(
-        child: Container(
-          width: 170,
-          height: 170,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blue,
-                blurRadius: 40,
-                spreadRadius: 8,
-              ),
-            ],
-          ),
-          child: Assets.images.logo.svg(),
+  child: Container(
+    width: 170,
+    height: 170,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.blue,
+          blurRadius: 40,
+          spreadRadius: 8,
         ),
-      ),
+      ],
+    ),
+    child: Image.asset(
+      'assets/images/dimlife_logo.png',
+      fit: BoxFit.contain,
+    ),
+  ),
+),
 
       const Gap(24),
 
