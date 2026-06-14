@@ -107,7 +107,7 @@ class AboutPage extends HookConsumerWidget {
       ],
     ),
     child: Image.asset(
-      'assets/images/dimlife_logo.png',
+      'assets/images/dimlife-logo.png',
       fit: BoxFit.contain,
     ),
   ),
