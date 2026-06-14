@@ -95,15 +95,14 @@ class AboutPage extends HookConsumerWidget {
 
       Center(
   child: Container(
-    width: 170,
-    height: 170,
+    width: 220,
+    height: 220,
     decoration: BoxDecoration(
-      shape: BoxShape.circle,
       boxShadow: [
         BoxShadow(
-          color: Colors.blue,
-          blurRadius: 40,
-          spreadRadius: 8,
+          color: const Color(0xFF4DA3FF).withValues(alpha: 0.35),
+          blurRadius: 80,
+          spreadRadius: 15,
         ),
       ],
     ),
@@ -117,20 +116,26 @@ class AboutPage extends HookConsumerWidget {
       const Gap(24),
 
       Center(
-        child: Text(
-          "DimLife VPN",
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-      ),
+  child: Text(
+    "DimLife VPN",
+    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+      fontWeight: FontWeight.bold,
+      letterSpacing: 1.2,
+    ),
+  ),
+),
 
       const Gap(8),
 
       Center(
-        child: Text(
-          "Версия ${appInfo.presentVersion}",
-          style: const TextStyle(color: Colors.white60),
-        ),
-      ),
+  child: Text(
+    "v${appInfo.presentVersion}",
+    style: const TextStyle(
+      color: Colors.white54,
+      fontSize: 15,
+    ),
+  ),
+),
 
       const Gap(4),
 
