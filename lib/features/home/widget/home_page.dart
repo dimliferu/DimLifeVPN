@@ -24,7 +24,12 @@ class HomePage extends HookConsumerWidget {
     final activeProfile = ref.watch(activeProfileProvider);
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+surfaceTintColor: Colors.transparent,
+elevation: 0,
   centerTitle: true,
   leading: IconButton(
     icon: const Icon(
