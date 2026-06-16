@@ -132,7 +132,7 @@ elevation: 0,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Material(
-                      color: theme.colorScheme.primaryContainer,
+                      color: Colors.transparent,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16),
@@ -144,7 +144,14 @@ elevation: 0,
                         ),
                         onTap: () => ref.read(bottomSheetsNotifierProvider.notifier).showQuickSettings(),
                         child: Container(
-                          height: 32,
+  height: 32,
+  decoration: BoxDecoration(
+    color: Colors.black.withValues(alpha: 0.35),
+    borderRadius: const BorderRadius.only(
+      topLeft: Radius.circular(16),
+      topRight: Radius.circular(16),
+    ),
+  ),
                           padding: const EdgeInsetsDirectional.only(start: 16, end: 8),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
