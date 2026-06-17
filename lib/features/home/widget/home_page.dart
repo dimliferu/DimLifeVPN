@@ -94,22 +94,23 @@ elevation: 0,
                           _ => const Text(""),
                         },
                         const SliverFillRemaining(
-                          hasScrollBody: false,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [ConnectionButton(), ActiveProxyDelayIndicator()],
-                                ),
-                              ),
-                              ActiveProxyFooter(),
-                              Gap(32),
-                            ],
-                          ),
-                        ),
+  hasScrollBody: false,
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Expanded(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ConnectionButton(),
+            ActiveProxyDelayIndicator(),
+          ],
+        ),
+      ),
+    ],
+  ),
+),
                       ],
                     ),
                     // AsyncData() => switch (hasAnyProfile) {
