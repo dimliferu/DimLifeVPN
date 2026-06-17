@@ -85,14 +85,17 @@ elevation: 0,
                       children: [
                         // const Gap(100),
                         switch (activeProfile) {
-                          AsyncData(value: final profile?) => ProfileTile(
-                            profile: profile,
-                            isMain: true,
-                            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            color: Theme.of(context).colorScheme.surfaceContainer,
-                          ),
-                          _ => const Text(""),
-                        },
+  AsyncData(value: final profile?) => Padding(
+    padding: const EdgeInsets.only(top: 90),
+    child: ProfileTile(
+      profile: profile,
+      isMain: true,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: Theme.of(context).colorScheme.surfaceContainer,
+    ),
+  ),
+  _ => const SizedBox(),
+},
                         const SliverFillRemaining(
   hasScrollBody: false,
   child: Column(
