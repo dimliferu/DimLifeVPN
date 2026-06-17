@@ -1,0 +1,17 @@
+{
+  "profiles": [
+    {
+      "title": {
+        "en": "DimLife Free",
+        "fa": "DimLife Free"
+      },
+      "consent": {
+        "en": "Free VPN by DimLife",
+        "fa": "Free VPN by DimLife"
+      },
+      "region": [],
+      "sublink": "https://akillserv.online:2096/podpiska_akillserv/hlbju9yijo0gquwk",
+      "neededFeatures": []
+    }
+  ]
+}
