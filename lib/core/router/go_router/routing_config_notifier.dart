@@ -61,10 +61,10 @@ class RoutingConfigNotifier extends _$RoutingConfigNotifier {
     final isMobileBreakpoint = ref.watch(isMobileBreakpointProvider);
     final bool showProfilesAction;
     if (isMobileBreakpoint == true) {
-      showProfilesAction = false;
-    } else {
-      showProfilesAction = ref.watch(hasAnyProfileProvider).value ?? false;
-    }
+  showProfilesAction = true;
+} else {
+  showProfilesAction = ref.watch(hasAnyProfileProvider).value ?? false;
+}
     if (isMobileBreakpoint == null) return loadingConfig;
     return RoutingConfig(
       redirect: (context, state) {
