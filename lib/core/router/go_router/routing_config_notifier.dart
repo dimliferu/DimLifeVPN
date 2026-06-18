@@ -130,19 +130,7 @@ class RoutingConfigNotifier extends _$RoutingConfigNotifier {
                       pageBuilder: (_, state) =>
                           customTransition(TransitionType.fade, state.pageKey, const ProxiesOverviewPage()),
                     ),
-                    StatefulShellBranch(
-  routes: <GoRoute>[
-    GoRoute(
-      name: 'proxiesTab',
-      path: '/proxies',
-      builder: (_, _) =>
-          FocusScope(
-            node: FocusScopeNode(),
-            child: const ProxiesOverviewPage(),
-          ),
-    ),
-  ],
-),
+                    
                     if (isMobileBreakpoint)
                       GoRoute(
                         name: 'profileDetails',
