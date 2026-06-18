@@ -48,13 +48,12 @@ final loadingConfig = RoutingConfig(
 
 String getNameOfBranch(bool isMobileBreakpoint, bool showProfilesAction, int index) =>
     isMobileBreakpoint
-        ? ['home', 'profiles', 'settings'][index]
-    : ['home', if (showProfilesAction) 'profiles', 'settings', 'logs', 'about'][index];
-
+        ? ['home', 'proxies', 'profiles', 'settings'][index]
+        : ['home', if (showProfilesAction) 'profiles', 'settings', 'logs', 'about'][index];
 int getIndexOfBranch(bool isMobileBreakpoint, bool showProfilesAction, String name) =>
     isMobileBreakpoint
-        ? ['home', 'profiles', 'settings'].indexOf(name)
-    : ['home', if (showProfilesAction) 'profiles', 'settings', 'logs', 'about'].indexOf(name);
+        ? ['home', 'proxies', 'profiles', 'settings'].indexOf(name)
+        : ['home', if (showProfilesAction) 'profiles', 'settings', 'logs', 'about'].indexOf(name);
 
 @Riverpod(keepAlive: true)
 class RoutingConfigNotifier extends _$RoutingConfigNotifier {
@@ -131,6 +130,19 @@ class RoutingConfigNotifier extends _$RoutingConfigNotifier {
                       pageBuilder: (_, state) =>
                           customTransition(TransitionType.fade, state.pageKey, const ProxiesOverviewPage()),
                     ),
+                    StatefulShellBranch(
+  routes: <GoRoute>[
+    GoRoute(
+      name: 'proxiesTab',
+      path: '/proxies',
+      builder: (_, _) =>
+          FocusScope(
+            node: FocusScopeNode(),
+            child: const ProxiesOverviewPage(),
+          ),
+    ),
+  ],
+),
                     if (isMobileBreakpoint)
                       GoRoute(
                         name: 'profileDetails',
