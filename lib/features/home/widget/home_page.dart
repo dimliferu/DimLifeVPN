@@ -101,16 +101,9 @@ elevation: 0,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Expanded(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ConnectionButton(),
-            ActiveProxyDelayIndicator(),
-          ],
-        ),
-      ),
+      ConnectionButton(),
+      SizedBox(height: 12),
+      ActiveProxyDelayIndicator(),
     ],
   ),
 ),
