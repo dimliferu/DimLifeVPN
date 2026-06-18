@@ -137,18 +137,10 @@ bool showProfilesAction,
 bool isMobileBreakpoint,
 ) =>
 [
-ShellRouteAction(Icons.home_rounded, t.pages.home.title),
-
-if (showProfilesAction)
-ShellRouteAction(Icons.dns_rounded, t.pages.profiles.title),
-
-ShellRouteAction(Icons.settings_rounded, t.pages.settings.title),
-
-if (!isMobileBreakpoint)
-ShellRouteAction(Icons.description_rounded, t.pages.logs.title),
-
-if (!isMobileBreakpoint)
-ShellRouteAction(Icons.info_rounded, t.pages.about.title),
+ShellRouteAction(Icons.home_rounded, 'Главная'),
+ShellRouteAction(Icons.dns_rounded, 'Серверы'),
+ShellRouteAction(Icons.subscriptions_rounded, 'Подписки'),
+ShellRouteAction(Icons.settings_rounded, 'Настройки'),
 ];
 
 List<NavigationDestination> _navDests(List<ShellRouteAction> actions) =>
