@@ -99,8 +99,10 @@ elevation: 0,
                         const SliverFillRemaining(
   hasScrollBody: false,
   child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.start,
     children: [
+      SizedBox(height: 140),
+
       ConnectionButton(),
       SizedBox(height: 12),
       ActiveProxyDelayIndicator(),
