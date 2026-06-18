@@ -97,17 +97,28 @@ return Material(
     bottomNavigationBar: isMobileBreakpoint
         ? FocusScope(
             node: navScopeNode,
-            child: NavigationBar(
-              backgroundColor: Colors.transparent,
-              surfaceTintColor: Colors.transparent,
-              elevation: 0,
-              selectedIndex: navigationShell.currentIndex <= 1
-                  ? navigationShell.currentIndex
-                  : 0,
-              destinations:
-                  _navDests(_actions(t, showProfilesAction, isMobileBreakpoint)),
-              onDestinationSelected: (index) => _onTap(context, index),
-            ),
+            child: Container(
+  margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+  decoration: BoxDecoration(
+    color: Colors.black.withValues(alpha: 0.35),
+    borderRadius: BorderRadius.circular(24),
+  ),
+  child: ClipRRect(
+    borderRadius: BorderRadius.circular(24),
+    child: NavigationBar(
+      backgroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      indicatorColor: Colors.white.withValues(alpha: 0.12),
+      elevation: 0,
+      selectedIndex: navigationShell.currentIndex <= 1
+          ? navigationShell.currentIndex
+          : 0,
+      destinations:
+          _navDests(_actions(t, showProfilesAction, isMobileBreakpoint)),
+      onDestinationSelected: (index) => _onTap(context, index),
+    ),
+  ),
+),
           )
         : null,
   ),
