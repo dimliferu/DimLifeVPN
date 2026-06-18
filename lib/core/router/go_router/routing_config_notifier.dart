@@ -46,12 +46,14 @@ final loadingConfig = RoutingConfig(
   routes: <RouteBase>[GoRoute(path: '/home', builder: (context, state) => const Material())],
 );
 
-String getNameOfBranch(bool isMobileBreakpoint, bool showProfilesAction, int index) => isMobileBreakpoint
-    ? ['home', 'settings'][index]
+String getNameOfBranch(bool isMobileBreakpoint, bool showProfilesAction, int index) =>
+    isMobileBreakpoint
+        ? ['home', 'profiles', 'settings'][index]
     : ['home', if (showProfilesAction) 'profiles', 'settings', 'logs', 'about'][index];
 
-int getIndexOfBranch(bool isMobileBreakpoint, bool showProfilesAction, String name) => isMobileBreakpoint
-    ? ['home', 'settings'].indexOf(name)
+int getIndexOfBranch(bool isMobileBreakpoint, bool showProfilesAction, String name) =>
+    isMobileBreakpoint
+        ? ['home', 'profiles', 'settings'].indexOf(name)
     : ['home', if (showProfilesAction) 'profiles', 'settings', 'logs', 'about'].indexOf(name);
 
 @Riverpod(keepAlive: true)
