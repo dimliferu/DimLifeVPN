@@ -26,9 +26,22 @@ class ProfilesPage extends HookConsumerWidget {
     });
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
+
       appBar: AppBar(
-        title: Text(t.pages.profiles.title),
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        title: const Text('Подписки'),
         actions: [
+          IconButton(
+            onPressed: () async {
+              await ref.read(bottomSheetsNotifierProvider.notifier).showAddProfile();
+            },
+            icon: const Icon(Icons.add_rounded),
+            tooltip: 'Добавить подписку',
+          ),
           IconButton(
             onPressed: () => ref.read(foregroundProfilesUpdateNotifierProvider.notifier).trigger(),
             icon: const Icon(Icons.update_rounded),
@@ -42,20 +55,32 @@ class ProfilesPage extends HookConsumerWidget {
           const Gap(8),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async => await ref.read(bottomSheetsNotifierProvider.notifier).showAddProfile(),
-        label: Text(t.pages.profiles.add),
-        icon: const Icon(Icons.add_rounded),
-      ),
-      body: asyncProfiles.when(
-        data: (data) => ListView.separated(
-          padding: const EdgeInsets.all(12).copyWith(bottom: 84),
-          separatorBuilder: (context, index) => const Gap(12),
-          itemBuilder: (context, index) => ProfileTile(profile: data[index]),
-          itemCount: data.length,
+
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/fon.png'),
+            fit: BoxFit.cover,
+          ),
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Text(t.presentShortError(error)),
+        child: SafeArea(
+          child: asyncProfiles.when(
+            data: (data) => ListView.separated(
+              padding: const EdgeInsets.all(12).copyWith(bottom: 100),
+              separatorBuilder: (context, index) => const Gap(12),
+              itemBuilder: (context, index) => ProfileTile(profile: data[index]),
+              itemCount: data.length,
+            ),
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            error: (error, stackTrace) => Center(
+              child: Text(
+                t.presentShortError(error),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
