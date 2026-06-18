@@ -96,14 +96,18 @@ elevation: 0,
   ),
   _ => const SizedBox(),
 },
-                        const SliverFillRemaining(
+                        SliverFillRemaining(
   hasScrollBody: false,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      ConnectionButton(),
-      SizedBox(height: 12),
-      ActiveProxyDelayIndicator(),
+      const ConnectionButton(),
+      const SizedBox(height: 12),
+      const ActiveProxyDelayIndicator(),
+
+      const SizedBox(height: 20),
+
+      const ActiveProxyFooter(),
     ],
   ),
 ),
