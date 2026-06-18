@@ -145,6 +145,15 @@ class RoutingConfigNotifier extends _$RoutingConfigNotifier {
                 ),
               ],
             ),
+            StatefulShellBranch(
+  routes: <GoRoute>[
+    GoRoute(
+      name: 'proxiesTab',
+      path: '/proxies',
+      builder: (_, _) => const ProxiesOverviewPage(),
+    ),
+  ],
+),
             if (showProfilesAction)
               StatefulShellBranch(
                 routes: <GoRoute>[
