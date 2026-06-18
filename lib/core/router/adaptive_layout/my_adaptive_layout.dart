@@ -110,9 +110,7 @@ return Material(
       surfaceTintColor: Colors.transparent,
       indicatorColor: Colors.white.withValues(alpha: 0.12),
       elevation: 0,
-      selectedIndex: navigationShell.currentIndex <= 1
-          ? navigationShell.currentIndex
-          : 0,
+      selectedIndex: navigationShell.currentIndex,
       destinations:
           _navDests(_actions(t, showProfilesAction, isMobileBreakpoint)),
       onDestinationSelected: (index) => _onTap(context, index),
