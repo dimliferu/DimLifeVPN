@@ -132,14 +132,14 @@ initialLocation: index == navigationShell.currentIndex,
 }
 
 List<ShellRouteAction> _actions(
-Translations t,
-bool showProfilesAction,
-bool isMobileBreakpoint,
-) =>
-[
-ShellRouteAction(Icons.home_rounded, 'Главная'),
-ShellRouteAction(Icons.subscriptions_rounded, 'Подписки'),
-ShellRouteAction(Icons.settings_rounded, 'Настройки'),
+  Translations t,
+  bool showProfilesAction,
+  bool isMobileBreakpoint,
+) => [
+  ShellRouteAction(Icons.home_rounded, 'Главная'),
+  ShellRouteAction(Icons.dns_rounded, 'Серверы'),
+  ShellRouteAction(Icons.subscriptions_rounded, 'Подписки'),
+  ShellRouteAction(Icons.settings_rounded, 'Настройки'),
 ];
 
 List<NavigationDestination> _navDests(List<ShellRouteAction> actions) =>
