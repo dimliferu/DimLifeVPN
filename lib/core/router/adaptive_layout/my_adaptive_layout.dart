@@ -138,7 +138,6 @@ bool isMobileBreakpoint,
 ) =>
 [
 ShellRouteAction(Icons.home_rounded, 'Главная'),
-ShellRouteAction(Icons.dns_rounded, 'Серверы'),
 ShellRouteAction(Icons.subscriptions_rounded, 'Подписки'),
 ShellRouteAction(Icons.settings_rounded, 'Настройки'),
 ];
