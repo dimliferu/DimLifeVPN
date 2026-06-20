@@ -59,10 +59,7 @@ class ProxiesOverviewNotifier extends _$ProxiesOverviewNotifier with AppLogger {
   @override
   Stream<OutboundGroup?> build() {
     ref.disposeDelay(const Duration(seconds: 15));
-    final serviceRunning = ref.watch(serviceRunningProvider);
-    if (!serviceRunning) {
-      return Stream.error(const ServiceNotRunning());
-    }
+
     final sortBy = ref.watch(proxiesSortNotifierProvider);
     // yield* ref
     //     .watch(proxyRepositoryProvider)
