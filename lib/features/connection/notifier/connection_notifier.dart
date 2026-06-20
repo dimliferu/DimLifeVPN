@@ -171,7 +171,8 @@ class ConnectionNotifier extends _$ConnectionNotifier with AppLogger {
 
 @Riverpod(keepAlive: true)
 bool serviceRunning(Ref ref) {
-  return true;
+  // ref.watch(coreRestartSignalProvider);
+  return ref.watch(connectionNotifierProvider).valueOrNull?.isConnected ?? false;
 }
 
 class SingleCall {
