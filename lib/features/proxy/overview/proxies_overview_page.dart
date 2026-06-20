@@ -20,10 +20,6 @@ class ProxiesOverviewPage extends HookConsumerWidget with PresLogger {
     final proxies = ref.watch(proxiesOverviewNotifierProvider);
     final sortBy = ref.watch(proxiesSortNotifierProvider);
 
-    // final selectActiveProxyMutation = useMutation(
-    //   initialOnFailure: (error) => CustomToast.error(t.presentShortError(error)).show(context),
-    // );
-
     return Scaffold(
       appBar: AppBar(
         title: Text(t.pages.proxies.title),
@@ -34,23 +30,42 @@ class ProxiesOverviewPage extends HookConsumerWidget with PresLogger {
             icon: const Icon(FluentIcons.arrow_sort_24_regular),
             tooltip: t.pages.proxies.sort,
             itemBuilder: (context) {
-              return [...ProxiesSort.values.map((e) => PopupMenuItem(value: e, child: Text(e.present(t))))];
+              return [
+                ...ProxiesSort.values.map(
+                  (e) => PopupMenuItem(
+                    value: e,
+                    child: Text(e.present(t)),
+                  ),
+                ),
+              ];
             },
           ),
           const Gap(8),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async => await ref.read(proxiesOverviewNotifierProvider.notifier).urlTest("select"),
-        tooltip: t.pages.proxies.testDelay,
-        child: const Icon(FluentIcons.flash_24_filled),
+
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 100),
+        child: FloatingActionButton(
+          onPressed: () async =>
+              await ref
+                  .read(proxiesOverviewNotifierProvider.notifier)
+                  .urlTest("select"),
+          tooltip: t.pages.proxies.testDelay,
+          child: const Icon(FluentIcons.flash_24_filled),
+        ),
       ),
+
       body: proxies.when(
         data: (group) => group != null
             ? LayoutBuilder(
                 builder: (context, constraints) {
                   final width = constraints.maxWidth;
-                  final crossAxisCount = PlatformUtils.isMobile && width < 600 ? 1 : max(1, (width / 268).floor());
+                  final crossAxisCount =
+                      PlatformUtils.isMobile && width < 600
+                          ? 1
+                          : max(1, (width / 268).floor());
+
                   return GridView.builder(
                     padding: const EdgeInsets.only(bottom: 86),
                     itemCount: group.items.length,
@@ -60,24 +75,30 @@ class ProxiesOverviewPage extends HookConsumerWidget with PresLogger {
                     ),
                     itemBuilder: (context, index) {
                       final proxy = group.items[index];
+
                       return ProxyTile(
                         proxy,
                         selected: group.selected == proxy.tag,
                         onTap: () async {
-                          await ref.read(proxiesOverviewNotifierProvider.notifier).changeProxy(group.tag, proxy.tag);
-                          // if (selectActiveProxyMutation.state.isInProgress) return;
-                          // selectActiveProxyMutation.setFuture(
-                          // );
+                          await ref
+                              .read(
+                                proxiesOverviewNotifierProvider.notifier,
+                              )
+                              .changeProxy(group.tag, proxy.tag);
                         },
                       );
                     },
                   );
                 },
               )
-            : Center(child: Text(t.pages.proxies.empty)),
+            : Center(
+                child: Text(t.pages.proxies.empty),
+              ),
         error: (error, stackTrace) =>
-    Center(child: Text(t.presentShortError(error))),
-        loading: () => const Center(child: CircularProgressIndicator()),
+            Center(child: Text(t.presentShortError(error))),
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
