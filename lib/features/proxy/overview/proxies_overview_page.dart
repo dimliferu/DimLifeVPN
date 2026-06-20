@@ -76,7 +76,7 @@ class ProxiesOverviewPage extends HookConsumerWidget with PresLogger {
               )
             : Center(child: Text(t.pages.proxies.empty)),
         error: (error, stackTrace) =>
-    Center(child: Text(error.toString())),
+    Center(child: Text(t.presentShortError(error))),
         loading: () => const Center(child: CircularProgressIndicator()),
       ),
     );
