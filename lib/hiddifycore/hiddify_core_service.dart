@@ -448,10 +448,17 @@ class HiddifyCoreService with InfraLogger {
       onError: (error) {
         loggy.error("Stream error in ${key}StatusListener: $error");
 
-        // currentState = const CoreStatus.stopped();
-        // statusController.add(currentState);
-
-        // startListeningStatus(key, cc);
+        // A brief startup/restart race can refuse the first gRPC stream. Retry
+        // while the background client is still available instead of leaving
+        // the UI stuck in Connecting after the one-shot listener is cancelled.
+        Future<void>.delayed(const Duration(seconds: 1), () async {
+          if (await core.isBgClientAvailable() && await core.isActiveBg()) {
+            await startListeningStatus(key, cc);
+          } else if (!await core.isBgClientAvailable()) {
+            currentState = const CoreStatus.stopped();
+            statusController.add(currentState);
+          }
+        });
       },
     );
   }
