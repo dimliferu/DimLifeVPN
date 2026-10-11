@@ -338,3 +338,86 @@ jobs:
         run: |
           security delete-keychain $RUNNER_TEMP/app-signing.keychain-db ||echo ok
           rm ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision ||echo ok
+
+  publish-release:
+    name: Publish Android APK files
+    needs: build
+    if: ${{ inputs.upload-artifact && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Download Android build artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: android-apk
+          path: release-assets
+
+      - name: Verify APKs and generate checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            DimLifeVPN-Android-arm64.apk \
+            DimLifeVPN-Android-arm7.apk \
+            DimLifeVPN-Android-universal.apk \
+            DimLifeVPN-Android-x86_64.apk; do
+            if [[ ! -s "release-assets/$file" ]]; then
+              echo "::error::Expected APK is missing: $file"
+              exit 1
+            fi
+          done
+          (cd release-assets && sha256sum *.apk > SHA256SUMS.txt)
+          echo "Files that will be published:"
+          ls -lh release-assets
+
+      - name: Update rolling draft tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -f draft "$GITHUB_SHA"
+          git push --force origin refs/tags/draft
+
+      - name: Create or update Android release and upload individual files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_BODY="$(cat .github/release_message.md)"
+          RELEASE_NAME="DimLifeVPN — Android (последняя сборка)"
+
+          if RELEASE_JSON="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/draft" 2>/dev/null)"; then
+            RELEASE_ID="$(printf '%s' "$RELEASE_JSON" | jq -r '.id')"
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID" \
+              -f name="$RELEASE_NAME" \
+              -F draft=false \
+              -F prerelease=true \
+              -f body="$RELEASE_BODY"
+          else
+            gh api --method POST "repos/$GITHUB_REPOSITORY/releases" \
+              -f tag_name=draft \
+              -f target_commitish="$GITHUB_SHA" \
+              -f name="$RELEASE_NAME" \
+              -F draft=false \
+              -F prerelease=true \
+              -f body="$RELEASE_BODY"
+          fi
+
+          gh release upload draft \
+            release-assets/DimLifeVPN-Android-arm64.apk \
+            release-assets/DimLifeVPN-Android-arm7.apk \
+            release-assets/DimLifeVPN-Android-universal.apk \
+            release-assets/DimLifeVPN-Android-x86_64.apk \
+            release-assets/SHA256SUMS.txt \
+            --clobber \
+            --repo "$GITHUB_REPOSITORY"
