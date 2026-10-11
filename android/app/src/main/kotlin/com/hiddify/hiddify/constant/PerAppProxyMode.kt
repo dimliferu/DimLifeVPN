@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.constant
+package ru.dimlife.vpn.constant
 
 object PerAppProxyMode {
     const val OFF = "off"
