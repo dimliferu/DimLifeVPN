@@ -1,10 +1,10 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.net.Network
 import android.os.Build
-import com.hiddify.hiddify.Application
+import ru.dimlife.vpn.Application
 import com.hiddify.core.libbox.InterfaceUpdateListener
-import com.hiddify.hiddify.constant.Bugs
+import ru.dimlife.vpn.constant.Bugs
 
 
 import kotlinx.coroutines.Dispatchers
