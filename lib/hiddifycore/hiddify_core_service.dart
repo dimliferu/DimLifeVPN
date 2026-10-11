@@ -504,7 +504,7 @@ class HiddifyCoreService with InfraLogger {
 
       final lines = await stderrFile.readAsLines();
       final crashMarkers = RegExp(
-        r'(panic:|fatal error:|^goroutine \\d+ \\[|runtime/|hiddify-sing-box|sing-box/)',
+        r'(panic:|fatal error:|^goroutine \d+ \[|runtime/|hiddify-sing-box|sing-box/)',
         caseSensitive: false,
       );
       final relevant = lines.where((line) => crashMarkers.hasMatch(line)).toList();
@@ -514,9 +514,9 @@ class HiddifyCoreService with InfraLogger {
       }
 
       final tail = relevant.length > 60 ? relevant.sublist(relevant.length - 60) : relevant;
-      loggy.severe("Native core crash details from stderr.log (filtered):\\n${tail.join('\\n')}");
+      loggy.severe("Native core crash details from stderr.log (filtered):\n${tail.join('\n')}");
     } catch (e, stack) {
-      loggy.warning("Could not read native core crash details: $e\\n$stack");
+      loggy.warning("Could not read native core crash details: $e\n$stack");
     }
   }
 
