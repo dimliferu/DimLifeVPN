@@ -68,6 +68,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:scheme="dimlifevpn" />
+                <!-- Keep the legacy scheme so existing Hiddify-format links still open. -->
                 <data android:scheme="hiddify" />
                 <data android:scheme="v2ray" />
                 <data android:scheme="v2rayn" />
