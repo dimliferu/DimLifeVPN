@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
@@ -468,16 +469,55 @@ class HiddifyCoreService with InfraLogger {
     final coreLogLevel = getCoreLogLevel(logLevel);
     final listenKey = "${key}LogListener";
     // await stopListenSingle(listenKey);
-    await listenSingle<LogMessage>(listenKey, () {
-      return cc.logListener(LogRequest(level: coreLogLevel), options: grpcOptions).map((event) {
-        // Handle incoming event
-        // One message becomes one record. The old code split on newlines
-        // first, but the engine already sends one line per message, so the
-        // split only allocated a list and multiplied the work per burst.
-        coreLogFor(event.type).log(getLogLevel(event.level), event.message);
-        return event;
-      });
-    });
+    await listenSingle<LogMessage>(
+      listenKey,
+      () {
+        return cc.logListener(LogRequest(level: coreLogLevel), options: grpcOptions).map((event) {
+          // Handle incoming event
+          // One message becomes one record. The old code split on newlines
+          // first, but the engine already sends one line per message, so the
+          // split only allocated a list and multiplied the work per burst.
+          coreLogFor(event.type).log(getLogLevel(event.level), event.message);
+          return event;
+        });
+      },
+      onError: (error) {
+        if (key == "bg") {
+          loggy.error("Background core log stream closed; checking native stderr for crash details.");
+          unawaited(_logNativeCrashDetails());
+        }
+      },
+    );
+  }
+
+  /// Go panics from the Android core are redirected to stderr.log by BoxService.
+  /// On a background log-stream failure, surface only crash/stack markers so the
+  /// diagnostic output does not dump the entire file or profile data into app logs.
+  Future<void> _logNativeCrashDetails() async {
+    try {
+      final directories = ref.read(appDirectoriesProvider).requireValue;
+      final stderrFile = File('${directories.workingDir.path}/stderr.log');
+      if (!await stderrFile.exists()) {
+        loggy.warning("Native core stderr log is not present.");
+        return;
+      }
+
+      final lines = await stderrFile.readAsLines();
+      final crashMarkers = RegExp(
+        r'(panic:|fatal error:|^goroutine \\d+ \\[|runtime/|hiddify-sing-box|sing-box/)',
+        caseSensitive: false,
+      );
+      final relevant = lines.where((line) => crashMarkers.hasMatch(line)).toList();
+      if (relevant.isEmpty) {
+        loggy.warning("Native core stderr exists (${lines.length} lines), but no Go panic/stack markers were found.");
+        return;
+      }
+
+      final tail = relevant.length > 60 ? relevant.sublist(relevant.length - 60) : relevant;
+      loggy.severe("Native core crash details from stderr.log (filtered):\\n${tail.join('\\n')}");
+    } catch (e, stack) {
+      loggy.warning("Could not read native core crash details: $e\\n$stack");
+    }
   }
 
   Future<void> stopListenSingle(String key) async {
