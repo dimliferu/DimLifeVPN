@@ -1,37 +1,29 @@
-# DimLifeVPN — релиз RELEASE_TAG
+# DimLifeVPN — Android
 
-VPN-клиент проекта [DimLife](https://dimlife.ru/). Выберите файл для своей системы.
+Автоматически обновляемая тестовая сборка Android-клиента DimLife из ветки `main`.
 
-## Android
+## Скачать APK
 
-- [APK для большинства современных телефонов — ARM64](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Android-arm64.apk)
-- [APK для ARMv7](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Android-arm7.apk)
-- [Универсальный APK](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Android-universal.apk)
-- [APK для x86_64](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Android-x86_64.apk)
+Выберите один файл. Для большинства современных Android-телефонов подходит **ARM64**.
 
-## Windows
+- **[ARM64 — большинство современных телефонов](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-arm64.apk)**
+- [Универсальный APK — если не знаете архитектуру](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-universal.apk)
+- [ARMv7 — старые 32-битные ARM-устройства](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-arm7.apk)
+- [x86_64 — эмуляторы и устройства Intel/AMD](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-x86_64.apk)
+- [SHA256SUMS.txt — контрольные суммы файлов](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/SHA256SUMS.txt)
 
-- [Установщик EXE](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Windows-Setup-x64.exe)
-- [MSIX-пакет](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Windows-x64.msix)
-- [Портативная ZIP-версия](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Windows-Portable-x64.zip)
+## Установка
 
-## macOS
+1. Скачайте подходящий APK.
+2. Откройте файл на Android и разрешите установку из этого источника, если система спросит.
+3. Если установка блокируется из-за подписи другой версии, удалите предыдущую версию приложения и установите APK заново. Перед удалением убедитесь, что у вас сохранены нужные настройки/подписки.
 
-- [DMG](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-MacOS.dmg)
-- [Установщик PKG](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-MacOS-Installer.pkg)
+## Важно
 
-## Linux
-
-- [AppImage](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Linux-x64-AppImage.AppImage)
-- [Архив AppImage](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Linux-x64-AppImage.tar.gz)
-- [Пакет Debian/Ubuntu (.deb)](https://github.com/dimliferu/DimLifeVPN/releases/download/RELEASE_TAG/DimLifeVPN-Debian-x64.deb)
-
-## О проекте
+Это тестовая сборка, которая обновляется после изменений в `main`. Она не является стабильным релизом. Файлы APK размещаются **по отдельности** — скачивать ZIP-архив GitHub Actions для установки не нужно.
 
 - [Исходный код](https://github.com/dimliferu/DimLifeVPN)
 - [История изменений](https://github.com/dimliferu/DimLifeVPN/commits/main)
 - [Сообщить об ошибке](https://github.com/dimliferu/DimLifeVPN/issues)
 - [Сайт DimLife](https://dimlife.ru/)
 - [Telegram](https://t.me/dimliferu)
-
-Некоторые файлы могут отсутствовать в конкретной сборке, если соответствующая платформа не собралась или временно отключена.
