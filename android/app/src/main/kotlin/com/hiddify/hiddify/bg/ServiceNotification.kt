@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -20,16 +20,16 @@ import com.hiddify.core.api.v2.hcore.CoreClient
 import com.hiddify.core.api.v2.hcore.SystemInfo
 import com.hiddify.core.api.v2.hello.HelloClient
 import com.hiddify.core.api.v2.hello.HelloRequest
-import com.hiddify.hiddify.Application
-import com.hiddify.hiddify.MainActivity
-import com.hiddify.hiddify.R
-import com.hiddify.hiddify.Settings
-import com.hiddify.hiddify.constant.Action
-import com.hiddify.hiddify.constant.Status
-//import com.hiddify.hiddify.utils.CommandClient
+import ru.dimlife.vpn.Application
+import ru.dimlife.vpn.MainActivity
+import ru.dimlife.vpn.R
+import ru.dimlife.vpn.Settings
+import ru.dimlife.vpn.constant.Action
+import ru.dimlife.vpn.constant.Status
+//import ru.dimlife.vpn.utils.CommandClient
 import com.hiddify.core.libbox.Libbox
-import com.hiddify.hiddify.Application.Companion.notification
-import com.hiddify.hiddify.utils.GrpcClientProvider
+import ru.dimlife.vpn.Application.Companion.notification
+import ru.dimlife.vpn.utils.GrpcClientProvider
 import com.squareup.wire.GrpcClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
