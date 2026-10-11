@@ -1,11 +1,11 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.net.DnsResolver
 import android.os.Build
 import android.os.CancellationSignal
 import android.system.ErrnoException
 import androidx.annotation.RequiresApi
-import com.hiddify.hiddify.ktx.tryResumeWithException
+import ru.dimlife.vpn.ktx.tryResumeWithException
 import com.hiddify.core.libbox.ExchangeContext
 import com.hiddify.core.libbox.LocalDNSTransport
 import kotlinx.coroutines.Dispatchers
