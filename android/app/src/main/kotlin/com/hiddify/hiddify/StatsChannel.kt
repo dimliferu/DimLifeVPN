@@ -1,7 +1,7 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.util.Log
-//import com.hiddify.hiddify.utils.CommandClient
+//import ru.dimlife.vpn.utils.CommandClient
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.JSONMethodCodec
