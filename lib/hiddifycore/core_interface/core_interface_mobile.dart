@@ -110,7 +110,9 @@ class CoreInterfaceMobile extends CoreInterface with InfraLogger {
       "debug": _debug,
     });
 
-    _isBgClientAvailable = true;
+    // Do not expose the background gRPC client as ready until its port is open.
+    // Otherwise status subscribers can race the Android foreground-service startup.
+    _isBgClientAvailable = false;
     loggy.info("Waiting for starting core");
     for (var i = 0; i < 20; i++) {
       try {
@@ -137,8 +139,10 @@ class CoreInterfaceMobile extends CoreInterface with InfraLogger {
 
     if (!await waitUntilPort(portBack, true, null)) {
       await stopMethodChannel();
+      _isBgClientAvailable = false;
       return const CoreStatus.stopped(alert: CoreAlert.startService, message: "starting background core...");
     }
+    _isBgClientAvailable = true;
     return const CoreStarted();
   }
 
