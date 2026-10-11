@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.app.Service
 import android.content.Intent
