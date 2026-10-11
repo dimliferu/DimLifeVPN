@@ -1,4 +1,4 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.app.Activity
 import android.content.Intent
@@ -9,9 +9,9 @@ import androidx.core.content.getSystemService
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
-import com.hiddify.hiddify.bg.BoxService
-import com.hiddify.hiddify.bg.ServiceConnection
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.bg.BoxService
+import ru.dimlife.vpn.bg.ServiceConnection
+import ru.dimlife.vpn.constant.Status
 
 class ShortcutActivity : Activity(), ServiceConnection.Callback {
 
