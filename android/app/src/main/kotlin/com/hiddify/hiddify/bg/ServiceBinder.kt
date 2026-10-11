@@ -1,10 +1,10 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.os.RemoteCallbackList
 import androidx.lifecycle.MutableLiveData
-import com.hiddify.hiddify.IService
-import com.hiddify.hiddify.IServiceCallback
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.IService
+import ru.dimlife.vpn.IServiceCallback
+import ru.dimlife.vpn.constant.Status
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
