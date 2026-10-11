@@ -58,7 +58,9 @@ jobs:
 
   build:
     needs: test
-    permissions: write-all
+    permissions:
+      contents: write
+      actions: read
 
     strategy:
       fail-fast: false
