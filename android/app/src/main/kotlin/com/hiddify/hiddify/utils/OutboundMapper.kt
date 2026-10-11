@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.utils
+package ru.dimlife.vpn.utils
 
 import com.google.gson.annotations.SerializedName
 import com.hiddify.core.libbox.OutboundGroup
