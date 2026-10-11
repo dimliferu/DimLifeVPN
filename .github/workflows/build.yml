@@ -205,6 +205,16 @@ jobs:
           make ${{ matrix.platform }}-prepare
 
 
+      - name: Set unique Android build version
+        if: matrix.platform == 'android-apk'
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="0.1.${GITHUB_RUN_NUMBER}"
+          BUILD_NUMBER=$((50000 + GITHUB_RUN_NUMBER))
+          sed -i -E "s/^version: .*/version: ${VERSION}+${BUILD_NUMBER}/" pubspec.yaml
+          echo "Building DimLifeVPN version ${VERSION}+${BUILD_NUMBER}"
+
       - name: Build ${{ matrix.platform }}
         env:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
@@ -381,11 +391,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          VERSION="$(sed -n 's/^version: \([^+]*\)+.*/\1/p' pubspec.yaml)"
-          if [[ -z "$VERSION" ]]; then
-            echo "::error::Could not read version from pubspec.yaml"
-            exit 1
-          fi
+          # Match the unique version injected into pubspec.yaml before the APK build.
+          VERSION="0.1.${GITHUB_RUN_NUMBER}"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
 
