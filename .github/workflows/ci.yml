@@ -34,4 +34,5 @@ jobs:
     if: "${{!contains(github.event.head_commit.message, 'release: version')}}"
     with:
       upload-artifact: ${{ github.event_name == 'push' }}
+      tag-name: v0.0.1
       

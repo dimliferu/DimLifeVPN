@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
     <channel>
         <title>DimLifeVPN releases</title>
         <link>https://github.com/dimliferu/DimLifeVPN/releases</link>
-        <description>Official DimLifeVPN release page. Android APK files are published individually.</description>
+        <description>Official Android updates for DimLifeVPN.</description>
         <item>
-            <title>DimLifeVPN — Android releases</title>
-            <link>https://github.com/dimliferu/DimLifeVPN/releases</link>
-            <description>Download the Android APK that matches your device from the official DimLifeVPN releases.</description>
-            <guid>https://github.com/dimliferu/DimLifeVPN/releases</guid>
+            <title>DimLifeVPN 0.0.1</title>
+            <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+            <enclosure
+                url="https://github.com/dimliferu/DimLifeVPN/releases/download/v0.0.1/DimLifeVPN-Android-universal.apk"
+                sparkle:version="0.0.1" sparkle:shortVersionString="0.0.1" sparkle:os="android" />
         </item>
     </channel>
 </rss>

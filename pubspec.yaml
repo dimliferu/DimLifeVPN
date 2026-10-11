@@ -1,7 +1,7 @@
 name: hiddify
 description: DimLifeVPN — VPN Client by DimLife.
 publish_to: "none"
-version: 5.0.0+50000
+version: 0.0.1+50001
 
 environment:
   sdk: ^3.10.4

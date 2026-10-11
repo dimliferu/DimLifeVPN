@@ -6,11 +6,11 @@
 
 Выберите один файл. Для большинства современных Android-телефонов подходит **ARM64**.
 
-- **[ARM64 — большинство современных телефонов](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-arm64.apk)**
-- [Универсальный APK — если не знаете архитектуру](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-universal.apk)
-- [ARMv7 — старые 32-битные ARM-устройства](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-arm7.apk)
-- [x86_64 — эмуляторы и устройства Intel/AMD](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/DimLifeVPN-Android-x86_64.apk)
-- [SHA256SUMS.txt — контрольные суммы файлов](https://github.com/dimliferu/DimLifeVPN/releases/download/draft/SHA256SUMS.txt)
+- **[ARM64 — большинство современных телефонов](https://github.com/dimliferu/DimLifeVPN/releases/download/v0.0.1/DimLifeVPN-Android-arm64.apk)**
+- [Универсальный APK — если не знаете архитектуру](https://github.com/dimliferu/DimLifeVPN/releases/download/v0.0.1/DimLifeVPN-Android-universal.apk)
+- [ARMv7 — старые 32-битные ARM-устройства](https://github.com/dimliferu/DimLifeVPN/releases/download/v0.0.1/DimLifeVPN-Android-arm7.apk)
+- [x86_64 — эмуляторы и устройства Intel/AMD](https://github.com/dimliferu/DimLifeVPN/releases/download/v0.0.1/DimLifeVPN-Android-x86_64.apk)
+- [SHA256SUMS.txt — контрольные суммы файлов](https://github.com/dimliferu/DimLifeVPN/releases/download/v0.0.1/SHA256SUMS.txt)
 
 ## Установка
 

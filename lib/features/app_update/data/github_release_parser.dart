@@ -23,12 +23,19 @@ abstract class GithubReleaseParser {
     }
     final preRelease = json["prerelease"] as bool;
     final publishedAt = DateTime.parse(json["published_at"] as String);
+    final assets = (json["assets"] as List<dynamic>? ?? const []);
+    final universalApk = assets.cast<Map<String, dynamic>?>().firstWhere(
+      (asset) => asset?["name"] == "DimLifeVPN-Android-universal.apk",
+      orElse: () => null,
+    );
+    final downloadUrl = universalApk?["browser_download_url"] as String? ?? json["html_url"] as String;
+
     return RemoteVersionEntity(
       version: version,
       buildNumber: buildNumber,
       releaseTag: fullTag,
       preRelease: preRelease,
-      url: json["html_url"] as String,
+      url: downloadUrl,
       publishedAt: publishedAt,
       flavor: flavor,
     );

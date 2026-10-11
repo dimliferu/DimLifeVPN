@@ -379,43 +379,53 @@ jobs:
           echo "Files that will be published:"
           ls -lh release-assets
 
-      - name: Update rolling draft tag
+      - name: Read app version
+        id: app-version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(sed -n 's/^version: \([^+]*\)+.*/\1/p' pubspec.yaml)"
+          if [[ -z "$VERSION" ]]; then
+            echo "::error::Could not read version from pubspec.yaml"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update versioned Android release
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.app-version.outputs.version }}
+          RELEASE_TAG: ${{ steps.app-version.outputs.tag }}
+        shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -f draft "$GITHUB_SHA"
-          git push --force origin refs/tags/draft
+          git tag -f "$RELEASE_TAG" "$GITHUB_SHA"
+          git push --force origin "refs/tags/$RELEASE_TAG"
 
-      - name: Create or update Android release and upload individual files
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
           RELEASE_BODY="$(cat .github/release_message.md)"
-          RELEASE_NAME="DimLifeVPN — Android (последняя сборка)"
+          RELEASE_NAME="DimLifeVPN v$VERSION — Android"
 
-          if RELEASE_JSON="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/draft" 2>/dev/null)"; then
+          if RELEASE_JSON="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" 2>/dev/null)"; then
             RELEASE_ID="$(printf '%s' "$RELEASE_JSON" | jq -r '.id')"
             gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID" \
               -f name="$RELEASE_NAME" \
               -F draft=false \
-              -F prerelease=true \
+              -F prerelease=false \
               -f body="$RELEASE_BODY"
           else
             gh api --method POST "repos/$GITHUB_REPOSITORY/releases" \
-              -f tag_name=draft \
+              -f tag_name="$RELEASE_TAG" \
               -f target_commitish="$GITHUB_SHA" \
               -f name="$RELEASE_NAME" \
               -F draft=false \
-              -F prerelease=true \
+              -F prerelease=false \
               -f body="$RELEASE_BODY"
           fi
 
-          gh release upload draft \
+          gh release upload "$RELEASE_TAG" \
             release-assets/DimLifeVPN-Android-arm64.apk \
             release-assets/DimLifeVPN-Android-arm7.apk \
             release-assets/DimLifeVPN-Android-universal.apk \
