@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.constant
+package ru.dimlife.vpn.constant
 
 object SettingsKey {
     private const val KEY_PREFIX = "flutter."
