@@ -93,11 +93,10 @@ class HiddifyCoreService with InfraLogger {
 
         await startListeningLogs("fg", core.fgClient);
         // await startListeningStatus("fg", core.fgClient);
-        if (!core.isSingleChannel()) {
-          await startListeningLogs("bg", core.bgClient);
-        }
+        // The background gRPC server is not running until setupBackground().
+        // Avoid subscriptions that are guaranteed to be refused during app initialization.
+        // Background listeners are armed after the service starts.
         statusController.add(currentState);
-        await startListeningStatus("bg", core.bgClient);
         // ref.read(coreRestartSignalProvider.notifier).restart();
         return right(unit);
       } catch (e) {
