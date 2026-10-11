@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.app.KeyguardManager
 import android.content.Context
@@ -9,11 +9,11 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import com.hiddify.hiddify.Application
-import com.hiddify.hiddify.MainActivity
-import com.hiddify.hiddify.Settings
-import com.hiddify.hiddify.constant.ServiceMode
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.Application
+import ru.dimlife.vpn.MainActivity
+import ru.dimlife.vpn.Settings
+import ru.dimlife.vpn.constant.ServiceMode
+import ru.dimlife.vpn.constant.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
