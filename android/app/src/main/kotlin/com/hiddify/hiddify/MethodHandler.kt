@@ -1,9 +1,9 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.util.Log
-import com.hiddify.hiddify.bg.BoxService
-//import com.hiddify.hiddify.bg.BoxService.Companion.workingDir
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.bg.BoxService
+//import ru.dimlife.vpn.bg.BoxService.Companion.workingDir
+import ru.dimlife.vpn.constant.Status
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -11,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel
 import com.hiddify.core.libbox.Libbox
 import com.hiddify.core.mobile.Mobile
 import com.hiddify.core.mobile.SetupOptions
-import com.hiddify.hiddify.bg.Bugs
+import ru.dimlife.vpn.bg.Bugs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
