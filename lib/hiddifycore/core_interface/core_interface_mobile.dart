@@ -63,8 +63,30 @@ class CoreInterfaceMobile extends CoreInterface with InfraLogger {
         "mode": mode,
         "debug": debug,
       });
-      final res = await helloClient.sayHello(HelloRequest(name: "test"));
-      loggy.info(res.toString());
+
+      // The Android method channel can finish before the local gRPC listener
+      // has bound its port. Wait for the listener instead of immediately
+      // issuing a second Hello request into the startup race.
+      final portReady = await waitUntilPort(portFront, true, null, maxTry: 50);
+      if (!portReady) {
+        throw StateError("Foreground core gRPC port $portFront did not open after setup");
+      }
+
+      Object? helloError;
+      for (var attempt = 0; attempt < 10; attempt++) {
+        try {
+          final res = await helloClient.sayHello(HelloRequest(name: "test"));
+          loggy.info(res.toString());
+          helloError = null;
+          break;
+        } catch (e) {
+          helloError = e;
+          await Future.delayed(const Duration(milliseconds: 300));
+        }
+      }
+      if (helloError != null) {
+        throw StateError("Foreground core gRPC handshake failed: $helloError");
+      }
     }
 
     // serverPublicKey = await methodChannel.invokeMethod<Uint8List>("get_grpc_server_public_key") ?? Uint8List.fromList([]);
