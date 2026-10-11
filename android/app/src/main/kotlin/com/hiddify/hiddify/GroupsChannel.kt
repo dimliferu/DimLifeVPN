@@ -1,9 +1,9 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.util.Log
 import com.google.gson.Gson
-//import com.hiddify.hiddify.utils.CommandClient
-import com.hiddify.hiddify.utils.ParsedOutboundGroup
+//import ru.dimlife.vpn.utils.CommandClient
+import ru.dimlife.vpn.utils.ParsedOutboundGroup
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.EventChannel
 import com.hiddify.core.libbox.OutboundGroup
