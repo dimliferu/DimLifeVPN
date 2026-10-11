@@ -1,12 +1,12 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.content.Context
 import android.util.Base64
-import com.hiddify.hiddify.bg.ProxyService
-import com.hiddify.hiddify.bg.VPNService
-import com.hiddify.hiddify.constant.PerAppProxyMode
-import com.hiddify.hiddify.constant.ServiceMode
-import com.hiddify.hiddify.constant.SettingsKey
+import ru.dimlife.vpn.bg.ProxyService
+import ru.dimlife.vpn.bg.VPNService
+import ru.dimlife.vpn.constant.PerAppProxyMode
+import ru.dimlife.vpn.constant.ServiceMode
+import ru.dimlife.vpn.constant.SettingsKey
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
 import java.io.File
