@@ -220,7 +220,7 @@ jobs:
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Setup Android Signing Properties
-        if: ${{ inputs.upload-artifact && startsWith(matrix.platform,'android') }}
+        if: ${{ inputs.upload-artifact && startsWith(matrix.platform,'android') && inputs.tag-name != 'draft' }}
         run: |
           echo "${{ secrets.ANDROID_SIGNING_KEY }}" | base64 --decode > android/key.jks
           echo "storeFile=$(pwd)/android/key.jks" > android/key.properties
@@ -432,26 +432,9 @@ jobs:
         with:
           files: ./out/*
           name: 'DimLifeVPN — тестовая сборка'
-          tag_name: 'DimLifeVPN — тестовая сборка'
+          tag_name: ${{ env.TAG_NAME }}
           body_path: './release.md'
           prerelease: true
-
-      - name: Create or Update Draft Release
-        uses: softprops/action-gh-release@v3
-        # env:
-          #GITHUB_TOKEN: ${{ secrets.TOKEN_FOR_HIDDIFY_APP_REPO }}
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#          GITHUB_REPOSITORY: hiddify/hiddify-app
-        with:
-          files: ./out/*
-          name: 'DimLifeVPN — тестовая сборка'
-          tag_name: 'DimLifeVPN — тестовая сборка'
-          body_path: './release.md'
-          target_commitish: ${{ github.sha }}
-          # target_commitish: '530bf77839a74d4f13847ba244a20734ac7ab119'
-          prerelease: true
-          # repository: hiddify/hiddify-app
 
   upload-release:
     permissions: write-all
