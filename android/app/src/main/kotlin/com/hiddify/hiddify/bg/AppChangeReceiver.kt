@@ -1,9 +1,9 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.hiddify.hiddify.Settings
+import ru.dimlife.vpn.Settings
 
 class AppChangeReceiver : BroadcastReceiver() {
 
