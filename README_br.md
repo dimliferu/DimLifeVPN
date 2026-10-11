@@ -2,7 +2,7 @@
 
 **DimLifeVPN** é um cliente VPN do projeto [DimLife](https://dimlife.ru/), criado para conectar a servidores VPN e gerenciar configurações e assinaturas.
 
-[English](README.md) · [Русский](README_ru.md) · [简体中文](README_cn.md) · [فارسی](README_fa.md) · [日本語](README_ja.md) · [Português (Brasil)](README_br.md)
+[Русский](README.md) · [English](README_en.md) · [简体中文](README_cn.md) · [فارسی](README_fa.md) · [日本語](README_ja.md) · [Português (Brasil)](README_br.md)
 
 ## Recursos
 
