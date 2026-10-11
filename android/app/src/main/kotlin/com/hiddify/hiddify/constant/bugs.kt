@@ -1,8 +1,8 @@
-package com.hiddify.hiddify.constant
+package ru.dimlife.vpn.constant
 
 
 import android.os.Build
-import com.hiddify.hiddify.BuildConfig
+import ru.dimlife.vpn.BuildConfig
 
 
 object Bugs {
