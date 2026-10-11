@@ -405,7 +405,7 @@ jobs:
           git tag -f "$RELEASE_TAG" "$GITHUB_SHA"
           git push --force origin "refs/tags/$RELEASE_TAG"
 
-          RELEASE_BODY="$(cat .github/release_message.md)"
+          RELEASE_BODY="$(sed -e "s|/download/v0.0.1/|/download/$RELEASE_TAG/|g" -e "s|версия 0.0.1|версия $VERSION|g" -e "s|version 0.0.1|version $VERSION|g" .github/release_message.md)"
           RELEASE_NAME="DimLifeVPN v$VERSION — Android"
 
           if RELEASE_JSON="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" 2>/dev/null)"; then
