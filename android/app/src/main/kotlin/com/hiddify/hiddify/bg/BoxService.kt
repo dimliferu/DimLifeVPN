@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -18,12 +18,12 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
-import com.hiddify.hiddify.Application
-import com.hiddify.hiddify.R
-import com.hiddify.hiddify.Settings
-import com.hiddify.hiddify.constant.Action
-import com.hiddify.hiddify.constant.Alert
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.Application
+import ru.dimlife.vpn.R
+import ru.dimlife.vpn.Settings
+import ru.dimlife.vpn.constant.Action
+import ru.dimlife.vpn.constant.Alert
+import ru.dimlife.vpn.constant.Status
 import com.hiddify.core.mobile.SetupOptions
 
 import go.Seq
@@ -36,9 +36,9 @@ import com.hiddify.core.libbox.CommandServerHandler
 import com.hiddify.core.libbox.Notification
 import com.hiddify.core.libbox.PlatformInterface
 import com.hiddify.core.libbox.SystemProxyStatus
-import com.hiddify.hiddify.BuildConfig
-import com.hiddify.hiddify.MainActivity
-import com.hiddify.hiddify.constant.Bugs
+import ru.dimlife.vpn.BuildConfig
+import ru.dimlife.vpn.MainActivity
+import ru.dimlife.vpn.constant.Bugs
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -167,7 +167,7 @@ class BoxService(
                         it.basePath = Settings.baseDir
                         it.workingDir = Settings.workingDir
                         it.tempDir = Settings.tempDir
-                        it.fixAndroidStack = com.hiddify.hiddify.bg.Bugs.fixAndroidStack
+                        it.fixAndroidStack = ru.dimlife.vpn.bg.Bugs.fixAndroidStack
                         it.mode=4L//mode.toLong()
                         it.listen= "127.0.0.1:${Settings.grpcServiceModePort}"
                         it.secret=""
