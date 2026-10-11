@@ -1,7 +1,7 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 import android.util.Log
 
-import com.hiddify.hiddify.Settings
+import ru.dimlife.vpn.Settings
 import android.content.Intent
 import android.content.pm.PackageManager.NameNotFoundException
 import android.net.ProxyInfo
@@ -11,8 +11,8 @@ import android.os.IBinder
 import android.os.ParcelFileDescriptor
 import com.hiddify.core.libbox.Libbox
 import com.hiddify.core.libbox.Notification
-import com.hiddify.hiddify.constant.PerAppProxyMode
-import com.hiddify.hiddify.ktx.toIpPrefix
+import ru.dimlife.vpn.constant.PerAppProxyMode
+import ru.dimlife.vpn.ktx.toIpPrefix
 import com.hiddify.core.libbox.TunOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
