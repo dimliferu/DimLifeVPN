@@ -46,6 +46,8 @@ class PreferencesEntry<T, P> with InfraLogger {
     }
     loggy.debug("updating preference [$key]($T) to [$mapped]");
     try {
+      // A nullable preference with a null value means unset; remove its stored key.
+      if (mapped == null) return await preferences.remove(key);
       if (!(validator?.call(value) ?? true)) {
         loggy.warning("invalid value [$value] for preference [$key]($T)");
         return false;
