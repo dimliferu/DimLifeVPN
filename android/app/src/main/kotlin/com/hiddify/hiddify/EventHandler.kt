@@ -1,9 +1,9 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.util.Log
 import androidx.lifecycle.Observer
-import com.hiddify.hiddify.constant.Alert
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.constant.Alert
+import ru.dimlife.vpn.constant.Status
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.JSONMethodCodec
