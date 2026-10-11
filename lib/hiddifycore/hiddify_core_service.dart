@@ -410,7 +410,12 @@ class HiddifyCoreService with InfraLogger {
   // }
 
   Stream<CoreStatus> watchStatus() async* {
-    await startListeningStatus("bg", core.bgClient);
+    // The background gRPC server is only available while the VPN service is running.
+    // The UI may subscribe to status before the user connects, so do not open a
+    // gRPC stream until the background service confirms that its client is available.
+    if (await core.isBgClientAvailable()) {
+      await startListeningStatus("bg", core.bgClient);
+    }
     yield* statusController.stream;
     // .endWith(const CoreStatus.stopped());
   }
