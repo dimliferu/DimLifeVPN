@@ -1,4 +1,4 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.util.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
