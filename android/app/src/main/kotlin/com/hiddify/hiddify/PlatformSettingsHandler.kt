@@ -1,4 +1,4 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -13,7 +13,7 @@ import android.os.Build
 import android.util.Base64
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import com.hiddify.hiddify.Application.Companion.packageManager
+import ru.dimlife.vpn.Application.Companion.packageManager
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
