@@ -6,7 +6,7 @@
 
 </div>
 
-[English](README.md) · [Русский](README_ru.md) · [简体中文](README_cn.md) · [فارسی](README_fa.md) · [日本語](README_ja.md) · [Português (Brasil)](README_br.md)
+[Русский](README.md) · [English](README_en.md) · [简体中文](README_cn.md) · [فارسی](README_fa.md) · [日本語](README_ja.md) · [Português (Brasil)](README_br.md)
 
 <div dir="rtl">
 
