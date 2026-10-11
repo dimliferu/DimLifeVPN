@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.constant
+package ru.dimlife.vpn.constant
 
 object Action {
     const val SERVICE = "com.hiddify.app.SERVICE"
