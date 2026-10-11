@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:hiddify/core/app_info/app_info_provider.dart';
 import 'package:hiddify/core/localization/locale_preferences.dart';
 import 'package:hiddify/core/model/constants.dart';
