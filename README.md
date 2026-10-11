@@ -1,31 +1,31 @@
 # DimLifeVPN
 
-**DimLifeVPN** — VPN-клиент проекта [DimLife](https://dimlife.ru/).
+**DimLifeVPN** is a VPN client from [DimLife](https://dimlife.ru/), built to manage VPN connections, configurations, and subscriptions.
 
-Приложение для подключения к VPN-серверам и управления конфигурациями и подписками. DimLifeVPN развивается как самостоятельный проект со своим названием, интерфейсом и визуальным стилем.
+[English](README.md) · [Русский](README_ru.md) · [简体中文](README_cn.md) · [فارسی](README_fa.md) · [日本語](README_ja.md) · [Português (Brasil)](README_br.md)
 
-## Возможности
+## Features
 
-- Подключение к VPN и отключение одним нажатием.
-- Импорт и управление конфигурациями и подписками.
-- Отображение состояния соединения и статистики трафика.
-- Поддержка совместимых конфигураций и сетевых протоколов, включая Sing-box и Xray-совместимые варианты.
-- Открытый исходный код и отсутствие встроенной рекламы.
+- Connect and disconnect with one tap.
+- Import and manage VPN configurations and subscriptions.
+- View connection status and traffic statistics.
+- Support for compatible configuration formats and protocols powered by the project's networking components.
+- Open-source project with no built-in advertising.
 
-Доступность конкретных протоколов зависит от используемой конфигурации и версии приложения.
+Support for specific protocols and configuration formats depends on the app version and the supplied configuration.
 
-## Ссылки
+## Links
 
-- **Сайт DimLife:** https://dimlife.ru/
-- **Репозиторий:** https://github.com/dimliferu/DimLifeVPN
-- **Скачать приложение:** https://github.com/dimliferu/DimLifeVPN/releases
-- **Сообщество в Telegram:** https://t.me/dimliferu
-- **Сообщить об ошибке:** https://github.com/dimliferu/DimLifeVPN/issues
+- **DimLife website:** https://dimlife.ru/
+- **Source code:** https://github.com/dimliferu/DimLifeVPN
+- **Releases and downloads:** https://github.com/dimliferu/DimLifeVPN/releases
+- **Telegram:** https://t.me/dimliferu
+- **Report a bug:** https://github.com/dimliferu/DimLifeVPN/issues
 
-## Разработка
+## Development
 
-Проект создан на Flutter. Инструкции и настройки сборки находятся в репозитории и файлах GitHub Actions.
+DimLifeVPN is built with Flutter. Build and CI configuration is maintained in this repository. The project is under active development; release downloads will be published on the Releases page when available.
 
-## Лицензии и сторонние компоненты
+## Third-party components and licenses
 
-DimLifeVPN использует сторонние компоненты с открытым исходным кодом. Авторские права, уведомления и лицензии исходных проектов сохраняются. Перед распространением сборок необходимо учитывать лицензии всех включённых компонентов.
+DimLifeVPN uses open-source third-party components. Their copyright notices and license terms remain applicable. Review the relevant licenses before redistributing builds.
