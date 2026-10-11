@@ -1,4 +1,4 @@
-package com.hiddify.hiddify
+package ru.dimlife.vpn
 
 import android.app.Application
 import android.app.NotificationManager
@@ -8,9 +8,9 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.PowerManager
 import androidx.core.content.getSystemService
-import com.hiddify.hiddify.bg.AppChangeReceiver
+import ru.dimlife.vpn.bg.AppChangeReceiver
 import go.Seq
-import com.hiddify.hiddify.Application as BoxApplication
+import ru.dimlife.vpn.Application as BoxApplication
 
 class Application : Application() {
 
