@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.utils
+package ru.dimlife.vpn.utils
 
 import com.hiddify.core.libbox.CommandClient
 import com.hiddify.core.libbox.CommandClientHandler
@@ -9,7 +9,7 @@ import com.hiddify.core.libbox.OutboundGroup
 import com.hiddify.core.libbox.OutboundGroupIterator
 import com.hiddify.core.libbox.StatusMessage
 import com.hiddify.core.libbox.StringIterator
-import com.hiddify.hiddify.ktx.toList
+import ru.dimlife.vpn.ktx.toList
 import go.Seq
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
