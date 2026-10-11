@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
@@ -7,7 +7,7 @@ import android.os.Build
 import android.os.Process
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.hiddify.hiddify.Application
+import ru.dimlife.vpn.Application
 import com.hiddify.core.libbox.InterfaceUpdateListener
 import com.hiddify.core.libbox.Libbox
 import com.hiddify.core.libbox.NetworkInterfaceIterator
