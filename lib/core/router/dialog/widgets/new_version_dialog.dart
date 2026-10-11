@@ -57,7 +57,8 @@ class NewVersionDialog extends HookConsumerWidget with PresLogger {
         TextButton(onPressed: context.pop, child: Text(t.common.later)),
         TextButton(
           onPressed: () async {
-            await UriUtils.tryLaunch(Uri.parse(newVersion.url));
+            final started = await ref.read(appUpdateNotifierProvider.notifier).downloadAndInstall(newVersion);
+            if (!started) await UriUtils.tryLaunch(Uri.parse(newVersion.url));
           },
           child: Text(t.dialogs.newVersion.updateNow),
         ),

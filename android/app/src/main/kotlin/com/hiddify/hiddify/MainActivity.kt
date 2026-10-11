@@ -7,6 +7,10 @@ import android.content.pm.PackageManager
 import android.net.VpnService
 import android.os.Build
 import android.util.Log
+import android.net.Uri
+import java.io.File
+import androidx.core.content.FileProvider
+import io.flutter.plugin.common.MethodChannel
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -44,6 +48,38 @@ class MainActivity : FlutterFragmentActivity(), ServiceConnection.Callback {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         instance = this
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "dimlifevpn/updater")
+            .setMethodCallHandler { call, result ->
+                if (call.method != "installApk") {
+                    result.notImplemented()
+                } else {
+                    val path = call.argument<String>("path")
+                    if (path.isNullOrBlank()) {
+                        result.error("INVALID_PATH", "APK path is missing", null)
+                    } else {
+                        try {
+                            val apk = File(path)
+                            if (!apk.exists() || !apk.isFile || apk.length() == 0L) {
+                                result.error("APK_MISSING", "Downloaded APK was not found", null)
+                            } else {
+                                val uri: Uri = FileProvider.getUriForFile(
+                                    this,
+                                    packageName + ".fileprovider",
+                                    apk
+                                )
+                                val intent = Intent(Intent.ACTION_VIEW).apply {
+                                    setDataAndType(uri, "application/vnd.android.package-archive")
+                                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                }
+                                startActivity(intent)
+                                result.success(true)
+                            }
+                        } catch (error: Exception) {
+                            result.error("INSTALLER_ERROR", error.message, null)
+                        }
+                    }
+                }
+            }
         reconnect()
         flutterEngine.plugins.add(MethodHandler(lifecycleScope))
         flutterEngine.plugins.add(PlatformSettingsHandler())

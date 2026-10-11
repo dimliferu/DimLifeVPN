@@ -9,6 +9,9 @@ import 'package:hiddify/features/app_update/model/remote_version_entity.dart';
 import 'package:hiddify/features/app_update/notifier/app_update_state.dart';
 import 'package:hiddify/utils/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:version/version.dart';
@@ -79,6 +82,27 @@ class AppUpdateNotifier extends _$AppUpdateNotifier with AppLogger {
           },
         )
         .run();
+  }
+
+
+  Future<bool> downloadAndInstall(RemoteVersionEntity version) async {
+    if (!Platform.isAndroid) return false;
+    try {
+      final directory = await getTemporaryDirectory();
+      final apk = File(directory.path + '/DimLifeVPN-update.apk');
+      final response = await Dio().download(version.url, apk.path);
+      if (response.statusCode != 200 || !await apk.exists() || await apk.length() == 0) {
+        throw Exception('The update APK could not be downloaded');
+      }
+      final installed = await const MethodChannel('dimlifevpn/updater').invokeMethod<bool>(
+        'installApk',
+        {'path': apk.path},
+      );
+      return installed ?? false;
+    } catch (error, stackTrace) {
+      loggy.warning('failed to download or start DimLifeVPN update', error, stackTrace);
+      return false;
+    }
   }
 
   Future<void> ignoreRelease(RemoteVersionEntity version) async {
