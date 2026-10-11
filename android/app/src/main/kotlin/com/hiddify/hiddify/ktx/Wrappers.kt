@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.ktx
+package ru.dimlife.vpn.ktx
 
 import android.net.IpPrefix
 import android.os.Build
