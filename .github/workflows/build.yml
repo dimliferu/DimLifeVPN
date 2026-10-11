@@ -19,18 +19,18 @@ env:
   NDK_VERSION: r28c
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   TAG_NAME: "${{ inputs.tag-name }}"
-  TARGET_NAME_gz: "Hiddify-Linux-x64-AppImage.tar"
-  TARGET_NAME_AppImage: "Hiddify-Linux-x64-AppImage"
-  TARGET_NAME_deb: "Hiddify-Debian-x64"
-  # TARGET_NAME_rpm: "Hiddify-rpm-x64"
-  TARGET_NAME_apk: "Hiddify-Android"
-  TARGET_NAME_aab: "Hiddify-Android"
-  TARGET_NAME_exe: "Hiddify-Windows-Setup-x64"
-  TARGET_NAME_msix: "Hiddify-Windows-x64"
-  TARGET_NAME_zip: "Hiddify-Windows-Portable-x64"
-  TARGET_NAME_dmg: "Hiddify-MacOS"
-  TARGET_NAME_pkg: "Hiddify-MacOS-Installer"
-  TARGET_NAME_ipa: "Hiddify-iOS"
+  TARGET_NAME_gz: "DimLifeVPN-Linux-x64-AppImage.tar"
+  TARGET_NAME_AppImage: "DimLifeVPN-Linux-x64-AppImage"
+  TARGET_NAME_deb: "DimLifeVPN-Debian-x64"
+  # TARGET_NAME_rpm: "DimLifeVPN-rpm-x64"
+  TARGET_NAME_apk: "DimLifeVPN-Android"
+  TARGET_NAME_aab: "DimLifeVPN-Android"
+  TARGET_NAME_exe: "DimLifeVPN-Windows-Setup-x64"
+  TARGET_NAME_msix: "DimLifeVPN-Windows-x64"
+  TARGET_NAME_zip: "DimLifeVPN-Windows-Portable-x64"
+  TARGET_NAME_dmg: "DimLifeVPN-MacOS"
+  TARGET_NAME_pkg: "DimLifeVPN-MacOS-Installer"
+  TARGET_NAME_ipa: "DimLifeVPN-iOS"
   
 
 jobs:
@@ -547,7 +547,7 @@ jobs:
 
       - uses: Apple-Actions/upload-testflight-build@v4
         with:
-          app-path: 'out/Hiddify-iOS.ipa' 
+          app-path: 'out/DimLifeVPN-iOS.ipa' 
           issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
           api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
           api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
