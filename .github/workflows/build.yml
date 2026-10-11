@@ -280,7 +280,7 @@ jobs:
             Write-Host "Signing $($file.FullName)"
             $ok = $false
             foreach ($attempt in 1..5) {
-              & $signtool.FullName sign /fd SHA256 /td SHA256 /tr http://timestamp.digicert.com /d Hiddify /f $pfx /p $env:SIGN_PASSWORD $file.FullName
+              & $signtool.FullName sign /fd SHA256 /td SHA256 /tr http://timestamp.digicert.com /d DimLifeVPN /f $pfx /p $env:SIGN_PASSWORD $file.FullName
               if ($LASTEXITCODE -eq 0) { $ok = $true; break }
               Start-Sleep -Seconds $attempt
             }
@@ -337,7 +337,7 @@ jobs:
         run: |
           mkdir out
           ls -R ./build/app/outputs
-          cp ./build/app/outputs/bundle/release/app-release.aab out/hiddify-android-market.aab || echo "no aab"
+          cp ./build/app/outputs/bundle/release/app-release.aab out/DimLifeVPN-Android.aab || echo "no aab"
 
       - name: Copy to out unix
         if: startsWith(matrix.platform,'linux') || matrix.platform == 'macos' || matrix.platform == 'ios'
@@ -421,7 +421,7 @@ jobs:
           set +e 
           sed 's|RELEASE_TAG|${{ env.TAG_NAME }}|g' ./.github/release_message.md > release.md
           pip install gitchangelog pystache mustache markdown
-          prelease=$(curl --silent "https://api.github.com/repos/hiddify/hiddify-app/releases/latest" | grep -Po '"tag_name": "\K([^"]*)') 
+          prelease=$(curl --silent "https://api.github.com/repos/dimliferu/DimLifeVPN/releases/latest" | grep -Po '"tag_name": "\K([^"]*)') 
           echo -e "\n\n<details markdown=1><summary>All changes from $current to the latest commit:</summary>\n\n">>release.md
           gitchangelog "${prelease}.." >> release.md  2>&1 || echo "Error in gitchangelog"
           echo -e "\n\n</details>">>release.md
@@ -431,8 +431,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: ./out/*
-          name: 'draft'
-          tag_name: 'draft'
+          name: 'DimLifeVPN — тестовая сборка'
+          tag_name: 'DimLifeVPN — тестовая сборка'
           body_path: './release.md'
           prerelease: true
 
@@ -445,8 +445,8 @@ jobs:
 #          GITHUB_REPOSITORY: hiddify/hiddify-app
         with:
           files: ./out/*
-          name: 'draft'
-          tag_name: 'draft'
+          name: 'DimLifeVPN — тестовая сборка'
+          tag_name: 'DimLifeVPN — тестовая сборка'
           body_path: './release.md'
           target_commitish: ${{ github.sha }}
           # target_commitish: '530bf77839a74d4f13847ba244a20734ac7ab119'
@@ -474,7 +474,7 @@ jobs:
           ls -R ./out
           ls -R ./.github/
           ls -R ./.git/
-          mv out/hiddify-android-market.aab  hiddify-android-market.aab
+          if (Test-Path out/DimLifeVPN-Android.aab) { Move-Item out/DimLifeVPN-Android.aab DimLifeVPN-Android.aab }
 
       - name: prepare_release_message
         run: |
@@ -499,9 +499,9 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJson: service_account.json
-          packageName: app.hiddify.com
+          packageName: ru.dimlife.vpn
           releaseName: ${{ env.TAG_NAME }}
-          releaseFiles: ./hiddify-android-market.aab
+          releaseFiles: ./DimLifeVPN-Android.aab
           track: 'beta'
 
 
