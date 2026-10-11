@@ -1,7 +1,7 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
 import android.os.Build
-import com.hiddify.hiddify.BuildConfig
+import ru.dimlife.vpn.BuildConfig
 
 
 object Bugs {
