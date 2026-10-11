@@ -1,4 +1,4 @@
-package com.hiddify.hiddify.constant
+package ru.dimlife.vpn.constant
 
 enum class Status {
     Stopped,
