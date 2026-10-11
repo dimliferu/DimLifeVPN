@@ -1,11 +1,11 @@
-package com.hiddify.hiddify.bg
+package ru.dimlife.vpn.bg
 
-import com.hiddify.hiddify.IService
-import com.hiddify.hiddify.IServiceCallback
-import com.hiddify.hiddify.Settings
-import com.hiddify.hiddify.constant.Action
-import com.hiddify.hiddify.constant.Alert
-import com.hiddify.hiddify.constant.Status
+import ru.dimlife.vpn.IService
+import ru.dimlife.vpn.IServiceCallback
+import ru.dimlife.vpn.Settings
+import ru.dimlife.vpn.constant.Action
+import ru.dimlife.vpn.constant.Alert
+import ru.dimlife.vpn.constant.Status
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
